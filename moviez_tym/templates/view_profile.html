@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% if user.is_authenticated %}
+{% block title %}
+  Moviez tym | {{user.username}}
+{% endblock %}
+{% block content %}
+<body id="page5">
+<!-- START PAGE SOURCE -->
+<div class="tail-top">
+  <div class="tail-bottom">
+    <div id="main">
+      <div id="header">
+        <div class="row-1">
+          <div class="fleft"><a href="#">Moviez <span>Tym</span></a></div>
+          <ul>
+            <li><a href="/credentials/movie_list/">Hello {{user.username}}</a></li>
+            <li><a href="/credentials/logout/">logout</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div id="content">
+        <div class="line-hor"></div>
+        <div class="box">
+          <div class="border-right">
+            <div class="border-left">
+              <div class="inner">
+                <div class="content">
+                <h3>Welcome to <span>Moviez Tym</span></h3><br>
+                  <br>
+                  <h4>My Profile</h4>
+                    <p> Username : {{user.username}}</p>
+                    <p> First name : {{request.user.first_name}}</p>
+                    <p> Last name : {{request.user.last_name}}</p>
+                    <p> E-mail : {{request.user.email}}</p>
+                    <p> Password : ***</p>
+                    <button class="link2"><a href="{% url 'credentials:edit_profile' profile.id %}"><span><span>Edit</span></span></a></button>
+
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div class="left">
+          <div class="right">
+            <div class="footerlink">
+              <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+              <p class="rf">Design by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+              <div style="clear:both;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+{% endblock %}
+{% endif %}

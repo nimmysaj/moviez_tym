@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {% if category %}
+    {{ movie.name }}- Moviez Tym
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<body id="page3">
+<!-- START PAGE SOURCE -->
+<div class="tail-top">
+  <div class="tail-bottom">
+    <div id="main">
+      <div id="header">
+        <div class="row-1">
+          <div class="fleft"><a href="#">Moviez <span>Tym</span></a></div>
+          <ul>
+            {% if user.is_authenticated %}
+            <li><a href="/credentials/movie_list/">Hello {{user.username}}</a></li>
+            <li><a href="/credentials/logout/">logout</a></li>
+            {% else %}
+            <li><a href="{% url 'credentials:register'%}">register</a></li><!--can use both format-->
+            <li><a href="/credentials/login/">login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="row-2">
+          <ul>
+            <li><a href="{% url 'movie_app:index' %}">Home</a></li>
+            <li><a href="{% url 'movie_app:about' %}">About</a></li>
+            <li><a href="{% url 'movie_app:articles' %}">Articles</a></li>
+            <li><a href="{% url 'credentials:review_list' %}">Reviews</a></li>
+            <li class="last"><a href="{% url 'movie_app:contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="content">
+        <div class="line-hor"></div>
+        <div class="box">
+          <div class="border-right">
+            <div class="border-left">
+              <div class="inner">
+                <h3>Movie: <span>{{movie.name}}</span></h3>
+                <h5>Release Date : {{movie.release_date}}</h5><br>
+                <div style="min-width:18rem">
+            <img src="{{movie.poster.url}}" alt="{{movie.name}}" height="200px" width="200px">
+        </div>
+                <h4>Cast : {{movie.actors}}</h4><br>
+                <p>{{movie.description}}</p><br>
+                <p>Official Trailer :<a class="btn btn-secondary" href="{{movie.youtube_link}}">{{movie.youtube_link}}</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div class="left">
+          <div class="right">
+            <div class="footerlink">
+              <p class="lf">Copyright &copy; 2010 <a href="#">SiteName</a> - All Rights Reserved</p>
+              <p class="rf">Design by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+              <div style="clear:both;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+{% endblock %}
+
+
+
+
+
